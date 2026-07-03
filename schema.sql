@@ -1,7 +1,7 @@
 
 
 
- 2. CREATE TABLES
+ CREATE TABLES
 
 
 -- Students table
