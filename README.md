@@ -466,20 +466,20 @@ BEGIN
     -- Step 8: Commit the transaction
     COMMIT;
     
-    DBMS_OUTPUT.PUT_LINE('✅ Success: Student ' || p_student_id || 
+    DBMS_OUTPUT.PUT_LINE(' Success: Student ' || p_student_id || 
                          ' enrolled in course ' || p_course_id || 
                          '. Remaining seats: ' || (v_available - 1));
 
 EXCEPTION
     WHEN e_course_full THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('❌ Error: Course ' || p_course_id || 
+        DBMS_OUTPUT.PUT_LINE(' Error: Course ' || p_course_id || 
                              ' is full (max seats: ' || v_max_seats || ').');
         RAISE_APPLICATION_ERROR(-20001, 'Course is full');
 
     WHEN e_duplicate THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('❌ Error: Student ' || p_student_id || 
+        DBMS_OUTPUT.PUT_LINE(' Error: Student ' || p_student_id || 
                              ' is already registered for course ' || p_course_id || '.');
         RAISE_APPLICATION_ERROR(-20002, 'Duplicate registration');
 
@@ -490,17 +490,17 @@ EXCEPTION
 
     WHEN NO_DATA_FOUND THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('❌ Error: Course ID ' || p_course_id || ' does not exist.');
+        DBMS_OUTPUT.PUT_LINE(' Error: Course ID ' || p_course_id || ' does not exist.');
         RAISE_APPLICATION_ERROR(-20004, 'Invalid course ID');
 
     WHEN DUP_VAL_ON_INDEX THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('❌ Error: Duplicate registration (unique constraint violated).');
+        DBMS_OUTPUT.PUT_LINE(' Error: Duplicate registration (unique constraint violated).');
         RAISE_APPLICATION_ERROR(-20002, 'Duplicate registration');
 
     WHEN OTHERS THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('❌ Unexpected error: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE(' Unexpected error: ' || SQLERRM);
         RAISE;
 END enrol_student;
 /
