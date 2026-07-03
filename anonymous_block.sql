@@ -98,22 +98,22 @@ BEGIN
     -- --------------------------------------------------------
     COMMIT;
     
-    DBMS_OUTPUT.PUT_LINE('✅ SUCCESS: Student ' || v_student_id || 
+    DBMS_OUTPUT.PUT_LINE(' SUCCESS: Student ' || v_student_id || 
                          ' enrolled in course ' || v_course_id || 
                          '. Seats left: ' || (v_available - 1));
 
 EXCEPTION
     WHEN e_student_not_found THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('❌ ERROR: Student ID ' || v_student_id || ' does not exist.');
+        DBMS_OUTPUT.PUT_LINE(' ERROR: Student ID ' || v_student_id || ' does not exist.');
     
     WHEN e_course_not_found THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('❌ ERROR: Course ID ' || v_course_id || ' does not exist.');
+        DBMS_OUTPUT.PUT_LINE(' ERROR: Course ID ' || v_course_id || ' does not exist.');
     
     WHEN NO_DATA_FOUND THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('❌ ERROR: Course ID ' || v_course_id || ' does not exist.');
+        DBMS_OUTPUT.PUT_LINE(' ERROR: Course ID ' || v_course_id || ' does not exist.');
     
     WHEN e_course_full THEN
         ROLLBACK;
@@ -122,12 +122,12 @@ EXCEPTION
     
     WHEN e_duplicate THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('❌ ERROR: Student ' || v_student_id || 
+        DBMS_OUTPUT.PUT_LINE(' ERROR: Student ' || v_student_id || 
                              ' is already registered for course ' || v_course_id || '.');
     
     WHEN OTHERS THEN
         ROLLBACK;
-        DBMS_OUTPUT.PUT_LINE('❌ UNEXPECTED ERROR: ' || SQLERRM);
+        DBMS_OUTPUT.PUT_LINE(' UNEXPECTED ERROR: ' || SQLERRM);
 END;
 /
 
