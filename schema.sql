@@ -39,27 +39,6 @@ CREATE TABLE registrations (
 );
 
 
-
-
--- 5. INSERT SAMPLE DATA (optional – you can put this in data.sql)
-
-
-/*
-INSERT INTO students (student_id, first_name, last_name, email)
-VALUES (1, 'Alice', 'Mukamana', 'alice@unilak.ac.rw');
-
-INSERT INTO students (student_id, first_name, last_name, email)
-VALUES (2, 'Bob', 'Niyonkuru', 'bob@unilak.ac.rw');
-
-INSERT INTO courses (course_id, course_name, credits, max_seats, available_seats)
-VALUES (10, 'Database Programming', 5, 30, 30);
-
-INSERT INTO courses (course_id, course_name, credits, max_seats, available_seats)
-VALUES (20, 'Web Development', 4, 25, 25);
-
-INSERT INTO registrations (registration_id, student_id, course_id)
-VALUES (100, 1, 10);
-*/
 COMMIT;
 
 -- ------------------------------------------------------------
