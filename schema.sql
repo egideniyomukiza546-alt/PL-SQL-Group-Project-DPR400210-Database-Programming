@@ -22,20 +22,20 @@ CREATE TABLE courses (
     available_seats NUMBER(3)     NOT NULL CHECK (available_seats >= 0)
 );
 
--- Registrations table (junction between students and courses)
-CREATE TABLE registrations (
-    registration_id   NUMBER        PRIMARY KEY,
-    student_id        NUMBER        NOT NULL,
-    course_id         NUMBER        NOT NULL,
-    registration_date DATE          DEFAULT SYSDATE,
-    grade             NUMBER(5,2)   NULL CHECK (grade BETWEEN 0 AND 100),
-    
-    -- Constraints
-    CONSTRAINT fk_reg_student FOREIGN KEY (student_id) 
+-- Registrations table (junction between students and courses)CREATE TABLE registrations (
+    registration_id NUMBER PRIMARY KEY,
+    student_id NUMBER NOT NULL,
+    course_id NUMBER NOT NULL,
+    registration_date DATE DEFAULT SYSDATE,
+    grade NUMBER(5,2) CHECK (grade BETWEEN 0 AND 100),
+    CONSTRAINT fk_reg_student
+        FOREIGN KEY (student_id)
         REFERENCES students(student_id),
-    CONSTRAINT fk_reg_course FOREIGN KEY (course_id) 
+    CONSTRAINT fk_reg_course
+        FOREIGN KEY (course_id)
         REFERENCES courses(course_id),
-    CONSTRAINT uk_reg_student_course UNIQUE (student_id, course_id)
+    CONSTRAINT uk_reg_student_course
+        UNIQUE (student_id, course_id)
 );
 
 
