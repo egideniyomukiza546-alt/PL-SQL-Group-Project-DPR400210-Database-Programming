@@ -1,4 +1,4 @@
--- 
+
 -- SAMPLE DATA: Student Course Registration System
 
 
@@ -135,12 +135,11 @@ COMMIT;
 
 -- 7. VERIFY DATA (display counts)
 
-PROMPT ===============================================
 PROMPT Data inserted successfully!
 PROMPT Students:   (SELECT COUNT(*) FROM students);
 PROMPT Courses:    (SELECT COUNT(*) FROM courses);
 PROMPT Registrations: (SELECT COUNT(*) FROM registrations);
-PROMPT ===============================================
+
 
 -- Display sample data to confirm
 SELECT 'Students' AS "Table", student_id, first_name, last_name 
