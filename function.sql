@@ -1,9 +1,9 @@
--- ============================================================
+
 -- FUNCTION: get_total_credits
 -- Course: DPR400210 – Database Programming
 -- Author: Group Assignment III
 -- Date: July 2026
--- ============================================================
+
 -- Description:
 --   This function returns the total number of credits a student
 --   has accumulated based on their completed registrations.
@@ -20,9 +20,9 @@ IS
     e_student_not_found EXCEPTION;
     PRAGMA EXCEPTION_INIT(e_student_not_found, -20005);
 BEGIN
-    -- --------------------------------------------------------
+
     -- Validate that the student exists
-    -- --------------------------------------------------------
+ 
     SELECT COUNT(*) INTO v_student_exists
     FROM students
     WHERE student_id = p_student_id;
@@ -31,9 +31,8 @@ BEGIN
         RAISE e_student_not_found;
     END IF;
 
-    -- --------------------------------------------------------
     -- Compute total credits from registrations
-    -- --------------------------------------------------------
+
     SELECT NVL(SUM(c.credits), 0)
     INTO v_total_credits
     FROM registrations r
@@ -54,14 +53,13 @@ EXCEPTION
 END get_total_credits;
 /
 
--- ------------------------------------------------------------
 -- 3. Verify function compilation
--- ------------------------------------------------------------
+
 SHOW ERRORS FUNCTION get_total_credits;
 
--- ------------------------------------------------------------
+
 -- 4. Test the function with sample students
--- ------------------------------------------------------------
+
 SET SERVEROUTPUT ON;
 
 DECLARE
@@ -84,10 +82,10 @@ EXCEPTION
 END;
 /
 
--- ------------------------------------------------------------
+
 -- 5. Use the function in a SQL query
 --    Show all students with their total credits
--- ------------------------------------------------------------
+
 SELECT 
     s.student_id,
     s.first_name || ' ' || s.last_name AS full_name,
